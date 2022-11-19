@@ -81,7 +81,6 @@ function App() {
               "& label.Mui-focused": {
                 color: "black",
               },
-              ".css-1x51dt5-MuiInputBase-input-MuiInput-input": {},
               "& .MuiInput-underline:after": {
                 borderBottomColor: "black",
                 display: "none",
