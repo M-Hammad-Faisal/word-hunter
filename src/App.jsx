@@ -76,12 +76,12 @@ function App() {
               maxLength: 20,
             }}
             sx={{
+              input: { textAlign: "center" },
               width: "50vw",
               "& label.Mui-focused": {
                 color: "black",
               },
               ".css-1x51dt5-MuiInputBase-input-MuiInput-input": {
-                textAlign: "center",
                 fontSize: "2vw",
               },
               "& .MuiInput-underline:after": {
