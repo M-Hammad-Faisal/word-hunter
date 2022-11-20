@@ -30,7 +30,7 @@ function App() {
     <Grid
       container
       sx={{
-        height: word === "" ? "80vh" : "",
+        height: word === "" ? "90vh" : "",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -39,7 +39,7 @@ function App() {
     >
       <Grid
         sx={{
-          marginY: "1vw",
+          marginY: "2vw",
           display: "flex",
           flexDirection: "column",
         }}
@@ -76,7 +76,7 @@ function App() {
               maxLength: 20,
             }}
             sx={{
-              input: { textAlign: "center", fontSize: "2vw" },
+              input: { textAlign: "center", fontSize: "4vw" },
               width: "50vw",
               "& label.Mui-focused": {
                 color: "black",
@@ -101,13 +101,14 @@ function App() {
         </Typography>
       ) : meanings === null || word === "" ? null : (
         <Grid
+          xs={12}
+          md={8}
           sx={{
             marginY: "1vw",
             width: "100%",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            paddingX: "20vw",
           }}
         >
           <Grid
@@ -162,11 +163,12 @@ function App() {
         <Typography
           variant="h6"
           sx={{
-            fontSize: "2vw",
+            marginBottom: "1vw",
+            fontSize: "3vw",
             textAlign: "center",
           }}
         >
-          @ {new Date().getFullYear()} All Rights Reserved.
+          @{new Date().getFullYear()} All Rights Reserved.
         </Typography>
       </Grid>
     </Grid>
