@@ -37,7 +37,7 @@ light/dark mode toggle, it’s optimized for a seamless user experience and hand
 ## Screenshots
 
 ![Word Hunter Light Mode](public/screenshots/light-mode.png)
-*Light mode with "hello" searched*
+*Light mode with "Hello" searched*
 
 ![Word Hunter Dark Mode](public/screenshots/dark-mode.png)
 *Dark mode with recent searches*
@@ -71,12 +71,6 @@ The app will open at http://localhost:3000 in your browser.
 3. Get a Random Word: Click the “Random Word” button to explore something new.
 4. Toggle Theme: Use the sun/moon icon to switch between light and dark modes.
 5. View Recent Searches: Clear the input to see your last 5 searches.
-
----
-
-## License
-
-This project is licensed under the MIT License. See for details.
 
 ---
 
