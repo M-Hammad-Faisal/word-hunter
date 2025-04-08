@@ -1,7 +1,18 @@
 audio {
   width: 100% !important;
+  border-radius: 8px;
 }
 
 audio::-webkit-media-controls-enclosure {
-  background-color: white !important;
+  border-radius: 8px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
