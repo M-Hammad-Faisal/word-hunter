@@ -1,0 +1,4 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Sitemap: https://m-hammad-faisal.github.io/word-hunter/sitemap.xml

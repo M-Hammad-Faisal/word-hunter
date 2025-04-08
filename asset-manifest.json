@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/word-hunter/static/css/main.b55a7688.css",
+    "main.js": "/word-hunter/static/js/main.195308e7.js",
+    "index.html": "/word-hunter/index.html",
+    "main.b55a7688.css.map": "/word-hunter/static/css/main.b55a7688.css.map",
+    "main.195308e7.js.map": "/word-hunter/static/js/main.195308e7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b55a7688.css",
+    "static/js/main.195308e7.js"
+  ]
+}
