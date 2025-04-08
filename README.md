@@ -6,8 +6,7 @@
 pronunciations, and more with a vibrant teal-themed UI. Featuring real-time API lookups, a random word generator, and a
 light/dark mode toggle, it’s optimized for a seamless user experience and handles over 10K+ daily API calls efficiently.
 
-**[Live Demo](https://m-hammad-faisal.github.io/word-hunter/)** | *
-*[GitHub Repository](https://github.com/M-Hammad-Faisal/word-hunter)**
+**[Live Demo](https://m-hammad-faisal.github.io/word-hunter/)** | **[GitHub Repository](https://github.com/M-Hammad-Faisal/word-hunter)**
 
 ---
 
