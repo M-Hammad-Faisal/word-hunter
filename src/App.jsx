@@ -1,5 +1,5 @@
 import "./App.css";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useMemo} from "react";
 import {Grid, Typography, TextField, CircularProgress, Button, IconButton} from "@mui/material";
 import {Brightness4, Brightness7} from "@mui/icons-material";
 import axios from "axios";
@@ -13,34 +13,45 @@ function App() {
     const [recentSearches, setRecentSearches] = useState(() => JSON.parse(localStorage.getItem("recentSearches")) || []);
     const [theme, setTheme] = useState("light");
 
-    const fetchWord = debounce((searchWord) => {
-        if (searchWord?.trim() === "") {
-            setMeanings([]);
-            setIsLoading(false);
-            return;
-        }
-        setIsLoading(true);
-        axios
-            .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchWord?.trim()}`)
-            .then((response) => {
-                setMeanings(response.data);
-                setRecentSearches((prev) => {
-                    const newSearches = [searchWord, ...prev.filter((w) => w !== searchWord)].slice(0, 5);
-                    localStorage.setItem("recentSearches", JSON.stringify(newSearches));
-                    return newSearches;
-                });
-                setIsLoading(false);
-            })
-            .catch(() => {
+    // Memoize the debounced fetchWord function to ensure it’s stable
+    const fetchWord = useMemo(() => {
+        return debounce((searchWord) => {
+            if (searchWord?.trim() === "") {
+                console.log("Empty search, clearing meanings");
                 setMeanings([]);
                 setIsLoading(false);
-            });
-    }, 500);
+                return;
+            }
+            console.log(`Fetching word: ${searchWord}`);
+            setIsLoading(true);
+            axios
+                .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchWord.trim()}`)
+                .then((response) => {
+                    console.log("Fetch successful:", response.data);
+                    setMeanings(response.data);
+                    setRecentSearches((prev) => {
+                        const newSearches = [searchWord, ...prev.filter((w) => w !== searchWord)].slice(0, 5);
+                        localStorage.setItem("recentSearches", JSON.stringify(newSearches));
+                        return newSearches;
+                    });
+                    setIsLoading(false);
+                })
+                .catch((error) => {
+                    console.error("Fetch error:", error);
+                    setMeanings([]);
+                    setIsLoading(false);
+                });
+        }, 500);
+    }, []); // Empty array ensures fetchWord is created once
 
     useEffect(() => {
+        console.log("useEffect triggered with word:", word);
         fetchWord(word);
-        return () => fetchWord.cancel(); // Cleanup debounce
-    }, [word, fetchWord]); // Added fetchWord to dependencies
+        return () => {
+            console.log("Cleaning up debounce for word:", word);
+            fetchWord.cancel();
+        };
+    }, [word, fetchWord]);
 
     useEffect(() => {
         document.body.className = theme;
@@ -52,9 +63,13 @@ function App() {
             .get("https://random-word-api.herokuapp.com/word?number=1")
             .then((response) => {
                 const randomWord = response.data[0];
+                console.log("Random word fetched:", randomWord);
                 setWord(randomWord);
             })
-            .catch(() => setIsLoading(false));
+            .catch((error) => {
+                console.error("Random word fetch error:", error);
+                setIsLoading(false);
+            });
     };
 
     const toggleTheme = () => {
